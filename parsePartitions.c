@@ -624,7 +624,7 @@ static int myGetline(char **lineptr, int *n, FILE *stream)
        /* Need to enlarge the line buffer.  */
        len = p - line;
        size *= 2;
-       line = rax_realloc (line, size, FALSE);
+       line = (char*)rax_realloc (line, size, FALSE);
        if (line == NULL)
 	 goto lose;
        *lineptr = line;
