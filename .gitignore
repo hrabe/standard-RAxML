@@ -1,6 +1,7 @@
 *.o
 /raxmlHPC*
 /WindowsMSVC8/Debug/**
+/WindowsMSVC8/Release/**
 *.vcproj.INVISION*
 *.ncb
 *.suo
