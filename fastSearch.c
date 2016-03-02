@@ -80,7 +80,7 @@ static void addInsertion(nodeptr p, double lh, insertions *ins)
     }
   else
     {        
-      ins->s = rax_realloc(ins->s, sizeof(scores) * ins->maxCount * 2, FALSE);     
+      ins->s = (scores*)rax_realloc(ins->s, sizeof(scores) * ins->maxCount * 2, FALSE);     
 
       ins->maxCount *= 2;
 
