@@ -87,15 +87,10 @@ char *protModels[NUM_PROT_MODELS] = {"DAYHOFF", "DCMUT", "JTT", "MTREV", "WAG", 
 				     "BLOSUM62", "MTMAM", "LG", "MTART", "MTZOA", "PMB", "HIVB", "HIVW", 
 				     "JTTDCMUT", "FLU",  "STMTREV", "DUMMY", "DUMMY2", "AUTO", "LG4M", "LG4X", "PROT_FILE", "GTR_UNLINKED", "GTR"};
 
-const char binaryStateNames[2]   = {'0', '1'};
-const char dnaStateNames[4]      = {'A', 'C', 'G', 'T'};
-const char protStateNames[20]    = {'A','R', 'N', 'D', 'C', 'Q', 'E', 'G', 'H', 
-				    'I', 'L', 'K', 'M', 'F', 'P', 'S', 'T', 'W', 
-				    'Y', 'V'};
-const char genericStateNames[32] = {'0', '1', '2', '3', '4', '5', '6', '7', 
-				    '8', '9', 'A', 'B', 'C', 'D', 'E', 'F',
-				    'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N',
-				    'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V'};
+extern const char binaryStateNames[2];
+extern const char dnaStateNames[4];
+extern const char protStateNames[20];
+extern const char genericStateNames[32];
 
 const char inverseMeaningBINARY[4] = {'_', '0', '1', '-'};
 const char inverseMeaningDNA[16]   = {'_', 'A', 'C', 'M', 'G', 'R', 'S', 'V', 'T', 'W', 'Y', 'H', 'K', 'D', 'B', '-'};
@@ -127,10 +122,7 @@ const unsigned int bitVectorIdentity[256] = {0 ,1 ,2 ,3 ,4 ,5 ,6 ,7 ,8 ,9 ,10 ,1
 
 
 
-const unsigned int bitVectorAA[23] = {1, 2, 4, 8, 16, 32, 64, 128, 
-				      256, 512, 1024, 2048, 4096, 
-				      8192, 16384, 32768, 65536, 131072, 262144, 
-				      524288, 12 /* N | D */, 96 /*Q | E*/, 1048575 /* - */};
+extern const unsigned int bitVectorAA[23];
 
 const unsigned int bitVectorSecondary[256] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 
 					      10, 11, 12, 13, 14, 15, 0, 16, 32, 48, 64, 80, 96, 112, 128, 144, 160, 176, 192, 
@@ -150,17 +142,11 @@ const unsigned int bitVectorSecondary[256] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
 					      43680, 48048, 52416, 56784, 61152, 65520, 0, 4369, 8738, 13107, 17476, 21845, 26214, 30583, 
 					      34952, 39321, 43690, 48059, 52428, 56797, 61166, 65535};
 
-const unsigned int bitVector32[33] = {1,     2,    4,    8,   16,   32,    64,   128,
-                                      256, 512, 1024, 2048, 4096, 8192, 16384, 32768,
-                                      65536, 131072, 262144, 524288, 1048576, 2097152, 4194304, 8388608,
-                                      16777216, 33554432, 67108864, 134217728, 268435456, 536870912, 1073741824, 2147483648u, 
-				      4294967295u};
+extern const unsigned int bitVector32[33];
 
 /*const unsigned int bitVector64[65] = {};*/
 
-const unsigned int mask32[32] = {1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048, 4096, 8192, 16384, 32768, 65536, 131072, 
-					262144, 524288, 1048576, 2097152, 4194304, 8388608, 16777216, 33554432, 67108864, 134217728, 
-					268435456, 536870912, 1073741824, 2147483648U};
+extern const unsigned int mask32[32];
 
 const char *secondaryModelList[21] = { "S6A (GTR)", "S6B", "S6C", "S6D", "S6E", "S7A (GTR)", "S7B", "S7C", "S7D", "S7E", "S7F", "S16 (GTR)", "S16A", "S16B", "S16C", 
 				       "S16D", "S16E", "S16F", "S16I", "S16J", "S16K"};
