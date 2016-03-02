@@ -3,3 +3,7 @@
 *.vcproj.INVISION*
 *.ncb
 *.suo
+*.obj
+*.idb
+*.pdb
+*.manifest
