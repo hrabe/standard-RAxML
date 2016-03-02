@@ -49,6 +49,7 @@
 				WarningLevel="3"
 				Detect64BitPortabilityProblems="true"
 				DebugInformationFormat="4"
+				CompileAs="2"
 				ShowIncludes="true"
 			/>
 			<Tool
@@ -214,10 +215,6 @@
 			</File>
 			<File
 				RelativePath=".\src\getopt.c"
-				>
-			</File>
-			<File
-				RelativePath="..\globalVariables.c"
 				>
 			</File>
 			<File

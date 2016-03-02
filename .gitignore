@@ -1,5 +1,6 @@
 *.o
 /raxmlHPC*
+/WindowsMSVC8/Debug/**
 *.vcproj.INVISION*
 *.ncb
 *.suo
@@ -7,3 +8,6 @@
 *.idb
 *.pdb
 *.manifest
+*.dep
+*.res
+*.ilk
