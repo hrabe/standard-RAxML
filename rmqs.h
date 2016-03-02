@@ -65,27 +65,27 @@ static inline DTidx block(DTidx i);
 static inline DTidx superblock(DTidx i);
 
 // precomputed Catalan triangle (17 is enough for 64bit computing):
-static const DTidx Catalan[17][17];
+extern const DTidx Catalan[17][17];
 
 // minus infinity (change for 64bit version)
-static const DT minus_infinity;
+extern const DT minus_infinity;
 
 // stuff for clearing the least significant x bits (change for 64-bit computing)
-static const DTsucc HighestBitsSet[8];
+extern const DTsucc HighestBitsSet[8];
 static DTsucc clearbits(DTsucc, DTidx);
 
 // Least Significant Bits for 8-bit-numbers:
-static const char LSBTable256[256];
+extern const char LSBTable256[256];
 
 // return least signigicant bit in constant time (change for 64bit version)
 static DTidx lsb(DTsucc);
 
 // the following stuff is for fast base 2 logarithms:
 // (currently only implemented for 32 bit numbers)
-static const char LogTable256[256];
+extern const char LogTable256[256];
 static DTidx log2fast(DTidx);
 
 // set if input array a is very small, so that naive scanning is better:
-static bool ARRAY_VERY_SMALL;
+extern bool ARRAY_VERY_SMALL;
 
 #endif
