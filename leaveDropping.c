@@ -317,7 +317,7 @@ static void *searchHashTable(HashTable *hashtable, void *value, unsigned int has
       if(elem->fullKey  == hashValue && 
 	 hashtable->equalFunction(hashtable, elem->value, value))
 	{
-	  result = elem->value; 
+	  result = (HashElem*)elem->value; 
 	  break;
 	}
     }
@@ -543,7 +543,7 @@ static Array* profileToArray(HashTable *profile, boolean updateFrequencyCount, b
   
   result->commonAttributes = (void*)rax_calloc(1, sizeof(ProfileElemAttr));
   result->commonAttributes = memcpy(result->commonAttributes, profile->commonAttributes, sizeof(ProfileElemAttr));
-  profileElemAttr = result->commonAttributes;
+  profileElemAttr = (ProfileElemAttr*)result->commonAttributes;
 
   result->length = profile->entryCount;
   result->arrayTable = (void*)rax_calloc(profile->entryCount, sizeof(ProfileElem*));
@@ -553,7 +553,7 @@ static Array* profileToArray(HashTable *profile, boolean updateFrequencyCount, b
   
   do
     {
-      ProfileElem *profileElem = getCurrentValueFromHashTableIterator(hashTableIterator);
+      ProfileElem *profileElem = (ProfileElem*)getCurrentValueFromHashTableIterator(hashTableIterator);
 
       if(updateFrequencyCount)
 	profileElem->treeVectorSupport = genericBitCount(profileElem->treeVector, profileElemAttr->treeVectorLength);
@@ -672,7 +672,7 @@ static Array *getInfrequentBipartitions(Array *oldArray, unsigned int threshold)
     *array = (Array *)rax_calloc(1, sizeof(Array)); 
   
   ProfileElem** 
-    oldArrayTable = oldArray->arrayTable;
+    oldArrayTable = (ProfileElem**)oldArray->arrayTable;
 
   unsigned int 
     i, 
@@ -755,7 +755,7 @@ static Dropset *getBestDropset(HashTable *dropsets
   do
     {
       Dropset 
-	*dropset = getCurrentValueFromHashTableIterator(hashTableIterator);
+	*dropset = (Dropset*)getCurrentValueFromHashTableIterator(hashTableIterator);
       
       unsigned int 
 	droppedTaxa = dropset->sizeOfDropset,
@@ -1009,8 +1009,8 @@ static HashTable* potentialProfileDropsets(Array *infrequentBipartitions,
 
 	  if( elemA->treeVectorSupport + elemB->treeVectorSupport > frequencyThreshold )
 	    {
-	      if( isUnionOfTreesAboveThreshold(infrequentBipartitions->commonAttributes, elemA, elemB, frequencyThreshold))
-		insertBipartitionPairDropset(dropsets, infrequentBipartitions->commonAttributes, elemA, elemB, droppedTaxa);
+	      if( isUnionOfTreesAboveThreshold((const ProfileElemAttr*)infrequentBipartitions->commonAttributes, elemA, elemB, frequencyThreshold))
+		insertBipartitionPairDropset(dropsets, (const ProfileElemAttr*)infrequentBipartitions->commonAttributes, elemA, elemB, droppedTaxa);
 	    }
 #ifdef _SORTED
 	  else
@@ -1135,14 +1135,14 @@ static HashTable *updateAndInsertElem(ProfileElem *elem, HashTable *hashTable, u
   unsigned int 
     hashValue = hashTable->hashFunction(hashTable, elem);
 
-  foundInHashTable = searchHashTable(hashTable, elem, hashValue);
+  foundInHashTable = (ProfileElem*)searchHashTable(hashTable, elem, hashValue);
   
   if(!foundInHashTable)
     {
       unsigned int 
 	complementHashValue = hashTable->hashFunction(hashTable, complement);
       
-      foundComplementInHashTable = searchHashTable(hashTable, complement, complementHashValue);
+      foundComplementInHashTable = (ProfileElem*)searchHashTable(hashTable, complement, complementHashValue);
       
       if(foundComplementInHashTable)
 	foundInHashTable = foundComplementInHashTable;
@@ -1176,9 +1176,9 @@ static Array* restrictProfile( Array *infrequentBipartitions, List *consensusBip
     i; 
   
   ProfileElemAttr 
-    *profileElemAttr = (ProfileElemAttr *)rax_calloc(1, sizeof(ProfileElemAttr));
+    *profileElemAttr = (ProfileElemAttr*)rax_calloc(1, sizeof(ProfileElemAttr));
   
-  profileElemAttr = memcpy(profileElemAttr, infrequentBipartitions->commonAttributes, sizeof(ProfileElemAttr));
+  profileElemAttr = (ProfileElemAttr*)memcpy(profileElemAttr, infrequentBipartitions->commonAttributes, sizeof(ProfileElemAttr));
   
   HashTable 
     *hashTable = PROFILE_TABLE(HASH_TABLE_SIZE(infrequentBipartitions->length + getLengthOfList(consensusBipartitions)),
