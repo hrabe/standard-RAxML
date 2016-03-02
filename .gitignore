@@ -1,2 +1,5 @@
 *.o
 /raxmlHPC*
+*.vcproj.INVISION*
+*.ncb
+*.suo
