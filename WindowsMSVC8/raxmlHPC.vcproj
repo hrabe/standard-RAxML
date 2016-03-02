@@ -217,6 +217,10 @@
 				>
 			</File>
 			<File
+				RelativePath="..\globalVariables.c"
+				>
+			</File>
+			<File
 				RelativePath="..\leaveDropping.c"
 				>
 			</File>

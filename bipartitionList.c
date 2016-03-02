@@ -4399,7 +4399,7 @@ static void printSortedBips(entry **consensusBips, const int consensusBipLen, co
 
   /* create an artificial entry for the top */
   topBip = (entry *)rax_malloc(sizeof(entry));
-  topBip->bitVector = rax_calloc(sizeof(unsigned int), vectorLen);  
+  topBip->bitVector = (unsigned int*)rax_calloc(sizeof(unsigned int), vectorLen);  
   
   for(i = 1; i < numTips ; i++)
     topBip->bitVector[i / MASK_LENGTH] |= mask32[i % MASK_LENGTH];  
@@ -4481,7 +4481,7 @@ static void printSortedBips(entry **consensusBips, const int consensusBipLen, co
     if( ! hasAncestor[i])
       {
 	IdList
-	  *elem  = rax_calloc(1,sizeof(IdList)); 
+	  *elem  = (IdList*)rax_calloc(1,sizeof(IdList)); 
 	elem->value = i; 
 	elem->next = listOfDirectChildren[consensusBipLen];  
 	listOfDirectChildren[consensusBipLen] = elem;       
@@ -4801,7 +4801,7 @@ static taxonMaskArray* initTaxonMaskArray(unsigned int vLength)
 {
   //initialize the structure itself 
   taxonMaskArray 
-    *b = rax_malloc(sizeof(taxonMaskArray));
+    *b = (taxonMaskArray*)rax_malloc(sizeof(taxonMaskArray));
     
   //make sure that the number of 32-bit integers that we need 
   //for storing the bits has been set
@@ -5405,7 +5405,7 @@ static double computeIC_ValueDouble(double refFrequency, double confFrequency, b
 	 }      
      }
     
-   ic = log(2);
+   ic = log((double)2);
    
    if(refFrequency > 0)
      ic += relativeRef * log(relativeRef);
@@ -5414,7 +5414,7 @@ static double computeIC_ValueDouble(double refFrequency, double confFrequency, b
      ic += relativeConf * log(relativeConf);
       
    //go from log(x) to log_2(x)
-   ic /= log(2);
+   ic /= log((double)2);
   
    if(negativeIC)
      return (-ic);
@@ -5481,7 +5481,7 @@ static double computeICA_ValueDouble(double refFrequency, entry ** conflicts, un
     
     relativeRef = refFrequency / relSum;
         
-    ica = log(n);
+    ica = log((double)n);
     
     if(relativeRef > 0)
       ica += relativeRef * log(relativeRef);
@@ -5494,7 +5494,7 @@ static double computeICA_ValueDouble(double refFrequency, entry ** conflicts, un
       }
       
     //go from log(x) to log_n(x)
-    ica /= log(n);
+    ica /= log((double)n);
   
     if(negativeIC)
       return (-ica);
@@ -5571,7 +5571,7 @@ static double computeICAFromTemp_ValueDouble(double refFrequency, entry ** confl
     
     relativeRef = refFrequency / relSum;
         
-    ica = log(n);
+    ica = log((double)n);
     
     if(relativeRef > 0)
       ica += relativeRef * log(relativeRef);
@@ -5586,7 +5586,7 @@ static double computeICAFromTemp_ValueDouble(double refFrequency, entry ** confl
     
     
     //go from log(x) to log_n(x)
-    ica /= log(n);
+    ica /= log((double)n);
   
     if(negativeIC)
       return (-ica);
