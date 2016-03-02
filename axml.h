@@ -157,8 +157,8 @@
 #define NINT(x)   ((int) ((x)>0 ? ((x)+0.5) : ((x)-0.5)))
 
 
-#define LOG(x)  log(x)
-#define EXP(x)  exp(x)
+#define LOG(x)  log((double)x)
+#define EXP(x)  exp((double)x)
 
 
 
