@@ -112,7 +112,7 @@ typedef struct
 #define PROFILE_TABLE(x,y) createHashTable(x,y,randomProfileElemHashFunction, bitVectorEqual)
 #define DROPSET_TABLE(x,y) createHashTable(x,y,randomDropsetHashFunctionSparse, dropsetEqualFunctionSparse)
 #define SORT_ARRAY(array, elemType, sortFunction) qsort(array->arrayTable, array->length, sizeof(elemType*), sortFunction)
-#define HASH_TABLE_SIZE(x) (x * LOG(x))
+#define HASH_TABLE_SIZE(x) (x * LOG((int)x))
 
 /* END */
 
