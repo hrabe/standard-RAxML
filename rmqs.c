@@ -4,7 +4,7 @@
 
 bool ARRAY_VERY_SMALL = false;
 
-static const DTidx Catalan[17][17] = {
+const DTidx Catalan[17][17] = {
 	{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
 	{0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16},
 	{0,0,2,5,9,14,20,27,35,44,54,65,77,90,104,119,135},
@@ -24,9 +24,9 @@ static const DTidx Catalan[17][17] = {
 	{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,35357670}
 };
 
-static const DT minus_infinity = INT_MIN;
+const DT minus_infinity = INT_MIN;
 
-static const char LSBTable256[256] = 
+const char LSBTable256[256] =
 	{
 		0,0,1,0,2,0,1,0,3,0,1,0,2,0,1,0,
 		4,0,1,0,2,0,1,0,3,0,1,0,2,0,1,0,
@@ -50,7 +50,7 @@ DTidx lsb(DTsucc v) {
 	return LSBTable256[v];
 }
 
-static const char LogTable256[256] = 
+const char LogTable256[256] =
 	{
 		0,0,1,1,2,2,2,2,3,3,3,3,3,3,3,3,
 		4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,
@@ -81,7 +81,7 @@ static DTidx log2fast(DTidx v) {
 	return c;
 }
 
-static const DTsucc HighestBitsSet[8] = {~0, ~1, ~3, ~7, ~15, ~31, ~63, ~127};
+const DTsucc HighestBitsSet[8] = {~0, ~1, ~3, ~7, ~15, ~31, ~63, ~127};
 
 static DTsucc clearbits(DTsucc n, DTidx x) {
 	return n & HighestBitsSet[x];
