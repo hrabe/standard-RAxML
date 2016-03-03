@@ -19,7 +19,7 @@ typedef unsigned __int64 uint64_t;
 
 #ifdef  _WIN64
 typedef unsigned __int64    ssize_t;
-#define _UI64_MAX SSIZE_MAX;
+#define SSIZE_MAX _UI64_MAX
 #else
 typedef _W64 unsigned int   ssize_t;
 #define SSIZE_MAX _UI64_MAX
