@@ -28,12 +28,14 @@ typedef _W64 unsigned int   ssize_t;
 #define PRIu64 "I64u"
 #define PRId64 "I64d"
 
-// Calculates log2 of number.  
-static double log2( double n )  
+#if _MSC_VER <= 1600
+const double LN2_VAL = log(2.0);
+
+static inline double log2( double n )
 {  
-    // log(n)/log(2) is log2.  
-    return log( (double)n ) / log( (double)2 );  
+    return log( (double)n ) / LN2_VAL;
 }
+#endif //_MSC_VER <= 1600
 
 #endif //_MSC_VER
 
